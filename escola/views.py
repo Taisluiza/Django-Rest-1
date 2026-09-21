@@ -12,22 +12,19 @@ class EstudanteViewSet(viewsets.ModelViewSet):
     serializer_class = EstudanteSerializer
 
 class CursoViewSet(viewsets.ModelViewSet):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
 
 class MatriculaViewSet(viewsets.ModelViewSet):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
 
 
 # PARA SELECIONAR APENAS UMA MATRICA DE UM ESTUDANTE
 class ListaMatriculaEstudante(generics.ListAPIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    
     def get_queryset(self):
         queryset = Matricula.objects.filter(estudante_id=self.kwargs['pk'])  # FILTRA PARA PEGAR APENAS 1, PELA CHAVE PRIMARIA
         return queryset
@@ -35,8 +32,7 @@ class ListaMatriculaEstudante(generics.ListAPIView):
 
 
 class ListaMatriculaCurso(generics.ListAPIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+   
     def get_queryset(self):
         queryset = Matricula.objects.filter(curso_id=self.kwargs['pk'])
         return queryset
