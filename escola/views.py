@@ -22,3 +22,10 @@ class ListaMatriculaEstudante(generics.ListAPIView):
         queryset = Matricula.objects.filter(estudante_id=self.kwargs['pk'])  # FILTRA PARA PEGAR APENAS 1, PELA CHAVE PRIMARIA
         return queryset
     serializer_class = ListaMatriculasEstudanteSerializer
+
+
+class ListaMatriculaCurso(generics.ListAPIView):
+    def get_queryset(self):
+        queryset = Matricula.objects.filter(curso_id=self.kwargs['pk'])
+        return queryset
+    serializer_class = ListaMatriculasCursoSerializer
