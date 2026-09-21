@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 class EstudanteViewSet(viewsets.ModelViewSet):
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] #PARA MODIFICIAR O TIPO DE AUTENTICAÇÃO É SÓ MUDAR DENTRO DE CHAVES O TIPO
     queryset = Estudante.objects.all()
     serializer_class = EstudanteSerializer
 
